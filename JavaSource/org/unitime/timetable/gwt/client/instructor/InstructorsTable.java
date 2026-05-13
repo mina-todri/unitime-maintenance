@@ -420,7 +420,7 @@ public class InstructorsTable extends UniTimeTable<InstructorInterface>  {
 		if (w != null && w instanceof CheckBox) {
 			return ((CheckBox)w).getValue();
 		} else {
-			return null;
+			return false;
 		}
 	}
 	
