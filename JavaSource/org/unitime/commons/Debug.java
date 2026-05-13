@@ -131,7 +131,7 @@ public class Debug {
 	public static synchronized String getSource(Class source) {
 		String name = source.getName();
 
-		if (name != null && name.indexOf('.') > 0) {
+		if (name != null && name.indexOf('.') >= 0) {
 			return name.substring(name.lastIndexOf('.') + 1);
 		}
 		return name;
