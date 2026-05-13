@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact name="unitime:GWT">
+    <output-path>$PROJECT_DIR$/target/gwt</output-path>
+    <root id="root">
+      <element id="gwt-compiler-output" facet="unitime/gwt/GWT" />
+    </root>
+  </artifact>
+</component>
