@@ -40,7 +40,6 @@ import biweekly.io.TzUrlDotOrgGenerator;
 import biweekly.io.text.ICalReader;
 import biweekly.property.TimezoneId;
 import biweekly.property.ValuedProperty;
-import biweekly.util.IOUtils;
 
 /**
  * A variant of the {@link TzUrlDotOrgGenerator} that has been made configurable using unitime.calendar.timezone property. 
@@ -67,18 +66,13 @@ public class CalendarVTimeZoneGenerator {
 		}
 
 		ICalendar ical;
-		ICalReader reader = null;
-		try {
-			reader = new ICalReader(getInputStream(uri));
+		try (ICalReader reader = new ICalReader(getInputStream(uri))){
 			ical = reader.readNext();
 		} catch (FileNotFoundException e) {
 			throw notFound(e);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
-		} finally {
-			IOUtils.closeQuietly(reader);
 		}
-
 		/*
 		 * There should always be exactly one iCalendar object in the file, but
 		 * check to be sure.
